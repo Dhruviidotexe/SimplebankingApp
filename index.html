@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ABC Bank educational banking dashboard prototype" />
+    <title>ABC Bank | Student Banking Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="header-inner container">
+          <a class="brand" href="#dashboard" aria-label="ABC Bank home" data-tab-link="dashboard">
+            <span class="brand-mark" aria-hidden="true"><i class="ti ti-building-bank"></i></span>
+            <span class="brand-name">ABC BANK</span>
+          </a>
+
+          <nav class="main-tabs" aria-label="Primary navigation" role="tablist">
+            <button
+              class="tab-button is-active"
+              id="tab-dashboard"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="content-dashboard"
+              data-tab="dashboard"
+            >
+              <i class="ti ti-layout-dashboard" aria-hidden="true"></i>
+              <span>Dashboard</span>
+            </button>
+            <button
+              class="tab-button"
+              id="tab-transactions"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="content-transactions"
+              data-tab="transactions"
+            >
+              <i class="ti ti-arrows-right-left" aria-hidden="true"></i>
+              <span>Transactions</span>
+            </button>
+            <button
+              class="tab-button"
+              id="tab-kyc"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="content-kyc"
+              data-tab="kyc"
+            >
+              <i class="ti ti-shield-check" aria-hidden="true"></i>
+              <span>KYC</span>
+            </button>
+          </nav>
+
+          <div class="profile-chip">
+            <div class="profile-copy">
+              <span class="eyebrow eyebrow-aqua">Verified user</span>
+              <span class="profile-name">Alexa Sharapova</span>
+            </div>
+            <img
+              class="profile-avatar"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsYVeN9jT5nr6HwGZlTfE2bCmNvo4-ewd5tq_jPb1Kgg&s=10"
+              alt="Alex Sterling profile avatar"
+              width="44"
+              height="44"
+            />
+          </div>
+        </div>
+      </header>
+
+      <main class="container main-content">
+        <section
+          class="tab-panel is-visible"
+          id="content-dashboard"
+          role="tabpanel"
+          aria-labelledby="tab-dashboard"
+          tabindex="0"
+        >
+          <div class="balance-card glass-panel">
+            <span class="glow-orb glow-orb-a" aria-hidden="true"></span>
+            <span class="glow-orb glow-orb-b" aria-hidden="true"></span>
+            <div class="balance-content">
+              <div class="balance-heading">
+                <span class="live-dot" aria-hidden="true"></span>
+                <p class="eyebrow eyebrow-aqua">Primary savings account</p>
+              </div>
+              <p class="balance-label">Available balance</p>
+              <p class="balance-value" id="balance-display" data-balance="45250.8">$45,250.80</p>
+              <div class="balance-meta" aria-label="Account summary">
+                <span class="growth-pill"><i class="ti ti-arrow-up-right" aria-hidden="true"></i> +12%</span>
+                <span class="meta-muted">this month</span>
+                <span class="meta-divider" aria-hidden="true"></span>
+                <span class="meta-muted">A/C: **** 8820</span>
+              </div>
+            </div>
+            <div class="balance-actions">
+              <button class="button button-ghost" type="button" data-action="history">
+                <i class="ti ti-history" aria-hidden="true"></i>
+                <span>Quick history</span>
+              </button>
+              <button class="button button-aqua" type="button" data-action="goal">
+                <i class="ti ti-plus" aria-hidden="true"></i>
+                <span>New goal</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="action-grid">
+            <article class="action-card deposit-card">
+              <div class="action-card-content">
+                <span class="section-kicker">Move money in</span>
+                <h1 class="display-heading">Deposit funds</h1>
+                <p class="card-description">
+                  Securely add money via UPI, wire transfer, or a linked debit card.
+                </p>
+                <form id="deposit-form" class="money-form" novalidate>
+                  <div class="field-group">
+                    <label for="deposit-amount">Amount to deposit</label>
+                    <div class="currency-input">
+                      <span aria-hidden="true">$</span>
+                      <input
+                        id="deposit-amount"
+                        name="depositAmount"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        inputmode="decimal"
+                        placeholder="0.00"
+                        autocomplete="off"
+                      />
+                    </div>
+                  </div>
+                  <button class="button button-navy button-full" type="submit">
+                    <i class="ti ti-arrow-down-left" aria-hidden="true"></i>
+                    <span>Confirm deposit</span>
+                  </button>
+                </form>
+              </div>
+              <span class="card-decoration deposit-decoration" aria-hidden="true"></span>
+            </article>
+
+            <article class="action-card withdraw-card">
+              <div class="withdraw-icon" aria-hidden="true"><i class="ti ti-send"></i></div>
+              <div>
+                <span class="section-kicker">Move money out</span>
+                <h2 class="section-heading">Withdraw</h2>
+                <p class="withdraw-description">
+                  Move funds instantly to your linked external accounts.
+                </p>
+              </div>
+              <form id="withdraw-form" class="money-form" novalidate>
+                <div class="field-group">
+                  <label for="withdraw-amount">Amount to withdraw</label>
+                  <div class="currency-input currency-input-light">
+                    <span aria-hidden="true">$</span>
+                    <input
+                      id="withdraw-amount"
+                      name="withdrawAmount"
+                      type="number"
+                      min="0.01"
+                      step="0.01"
+                      inputmode="decimal"
+                      placeholder="0.00"
+                      autocomplete="off"
+                    />
+                  </div>
+                </div>
+                <button class="button button-navy button-full" type="submit">
+                  <span>Send funds</span>
+                  <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+                </button>
+              </form>
+            </article>
+          </div>
+
+          <div class="dashboard-bottom-grid">
+            <article class="mini-card glass-panel">
+              <div class="mini-card-heading">
+                <div>
+                  <span class="section-kicker">KYC status</span>
+                  <h2 class="section-heading">Identity health</h2>
+                </div>
+                <span class="status-pill status-pending"><i class="ti ti-clock" aria-hidden="true"></i> 60% complete</span>
+              </div>
+              <div class="progress-track" aria-label="KYC progress: 60 percent">
+                <span class="progress-fill" style="width: 60%"></span>
+              </div>
+              <p class="mini-card-note">Add address proof to unlock higher transfer limits.</p>
+              <button class="text-button" type="button" data-tab-link="kyc">
+                Update KYC <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+              </button>
+            </article>
+
+            <article class="mini-card glass-panel recent-preview">
+              <div class="mini-card-heading">
+                <div>
+                  <span class="section-kicker">Latest message</span>
+                  <h2 class="section-heading">Transaction activity</h2>
+                </div>
+                <button class="icon-button" type="button" data-tab-link="transactions" aria-label="Open transactions">
+                  <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="preview-row">
+                <span class="transaction-icon transaction-icon-credit" aria-hidden="true"><i class="ti ti-arrow-down-left"></i></span>
+                <div class="preview-copy">
+                  <strong>Salary Deposit</strong>
+                  <span>Income · Today, 09:15 AM</span>
+                </div>
+                <strong class="amount-credit">+$8,450.00</strong>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="content-transactions"
+          role="tabpanel"
+          aria-labelledby="tab-transactions"
+          tabindex="0"
+          hidden
+        >
+          <div class="panel-heading-row">
+            <div>
+              <span class="section-kicker">Your money trail</span>
+              <h1 class="page-heading">Recent activity</h1>
+              <p class="page-description">A clear view of every deposit, payment, and withdrawal.</p>
+            </div>
+            <div class="heading-actions">
+              <button class="icon-button" type="button" data-action="filter" aria-label="Filter transactions" title="Filter transactions">
+                <i class="ti ti-filter" aria-hidden="true"></i>
+              </button>
+              <button class="icon-button" type="button" data-action="download" aria-label="Download transactions" title="Download transactions">
+                <i class="ti ti-download" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="activity-list" id="activity-list">
+            <div class="activity-group">
+              <div class="date-divider"><span>Today</span><span></span></div>
+              <div class="transaction-stack" id="activity-today">
+                <article class="transaction-row glass-panel">
+                  <div class="transaction-leading">
+                    <span class="transaction-icon transaction-icon-debit" aria-hidden="true"><i class="ti ti-shopping-cart"></i></span>
+                    <div>
+                      <h2>Apple Store Online</h2>
+                      <p>Payment · Electronics</p>
+                    </div>
+                  </div>
+                  <div class="transaction-trailing">
+                    <strong>-$1,299.00</strong>
+                    <span>14:20 PM</span>
+                  </div>
+                </article>
+                <article class="transaction-row glass-panel">
+                  <div class="transaction-leading">
+                    <span class="transaction-icon transaction-icon-credit" aria-hidden="true"><i class="ti ti-arrow-down-left"></i></span>
+                    <div>
+                      <h2>Salary Deposit</h2>
+                      <p>Income · ABC Corp</p>
+                    </div>
+                  </div>
+                  <div class="transaction-trailing">
+                    <strong class="amount-credit">+$8,450.00</strong>
+                    <span>09:15 AM</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="activity-group">
+              <div class="date-divider"><span>Yesterday</span><span></span></div>
+              <div class="transaction-stack">
+                <article class="transaction-row glass-panel">
+                  <div class="transaction-leading">
+                    <span class="transaction-icon transaction-icon-debit" aria-hidden="true"><i class="ti ti-coffee"></i></span>
+                    <div>
+                      <h2>Blue Bottle Coffee</h2>
+                      <p>Food &amp; Drink · Cafe</p>
+                    </div>
+                  </div>
+                  <div class="transaction-trailing">
+                    <strong>-$12.50</strong>
+                    <span>16:45 PM</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <button class="button button-outline button-full load-button" type="button" data-action="older">
+            <span>Load older transactions</span>
+            <i class="ti ti-arrow-down" aria-hidden="true"></i>
+          </button>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="content-kyc"
+          role="tabpanel"
+          aria-labelledby="tab-kyc"
+          tabindex="0"
+          hidden
+        >
+          <div class="kyc-shell">
+            <aside class="kyc-status-panel">
+              <div>
+                <span class="section-kicker">Protect your account</span>
+                <h1 class="page-heading page-heading-dark">Identity health</h1>
+                <p class="page-description page-description-dark">Verify your profile for higher limits.</p>
+              </div>
+
+              <div class="trust-score" aria-label="KYC trust score: 60 percent">
+                <svg viewBox="0 0 100 55" role="img" aria-label="60 percent KYC progress">
+                  <path class="trust-track" d="M 10,50 A 40,40 0 0 1 90,50"></path>
+                  <path class="trust-progress" d="M 10,50 A 40,40 0 0 1 90,50"></path>
+                </svg>
+                <div class="trust-score-value"><strong>60%</strong><span>Trust score</span></div>
+              </div>
+
+              <div class="verification-list">
+                <div class="verification-step">
+                  <span class="verification-icon verification-success" aria-hidden="true"><i class="ti ti-circle-check-filled"></i></span>
+                  <div><strong>Mobile verified</strong><span>Completed Mar 2026</span></div>
+                </div>
+                <div class="verification-step is-pending">
+                  <span class="verification-icon verification-warning" aria-hidden="true"><i class="ti ti-clock-filled"></i></span>
+                  <div><strong>Address proof</strong><span>Pending review</span></div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="kyc-form-panel">
+              <div>
+                <span class="section-kicker section-kicker-dark">Document center</span>
+                <h1 class="page-heading page-heading-dark">Update documents</h1>
+                <p class="page-description page-description-dark">Upload a clear scanned copy for faster approval.</p>
+              </div>
+
+              <form id="kyc-form" class="kyc-form" novalidate>
+                <div class="field-group field-group-dark">
+                  <label for="kyc-doc-type">Select document type</label>
+                  <div class="select-wrapper">
+                    <select id="kyc-doc-type" name="documentType">
+                      <option value="">Choose a document...</option>
+                      <option value="Aadhaar Card">Aadhaar Card</option>
+                      <option value="PAN Card">PAN Card</option>
+                      <option value="Passport">Passport</option>
+                      <option value="Driving License">Driving License</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <i class="ti ti-chevron-down" aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <label class="upload-zone" for="file-upload">
+                  <input id="file-upload" name="documentFile" type="file" accept=".pdf,.jpg,.jpeg,.png" />
+                  <span class="upload-icon" aria-hidden="true"><i class="ti ti-cloud-upload"></i></span>
+                  <strong id="upload-title">Drop your file here</strong>
+                  <span id="upload-subtitle">or browse from your device · PDF, JPG, PNG up to 5 MB</span>
+                </label>
+
+                <div class="saved-documents">
+                  <div class="saved-documents-heading">
+                    <span class="section-kicker section-kicker-dark">Saved documents</span>
+                    <span class="saved-count" id="saved-count">2 files</span>
+                  </div>
+                  <div class="document-list" id="document-list">
+                    <div class="document-chip" data-document-name="aadhaar_front.jpg">
+                      <i class="ti ti-file-text" aria-hidden="true"></i>
+                      <span><strong>Aadhaar Card</strong><small>aadhaar_front.jpg</small></span>
+                      <button type="button" class="chip-remove" aria-label="Remove Aadhaar Card" data-remove-document="aadhaar_front.jpg"><i class="ti ti-x" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="document-chip" data-document-name="pan_card.pdf">
+                      <i class="ti ti-file-shield" aria-hidden="true"></i>
+                      <span><strong>PAN Card</strong><small>pan_card.pdf</small></span>
+                      <button type="button" class="chip-remove" aria-label="Remove PAN Card" data-remove-document="pan_card.pdf"><i class="ti ti-x" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="button button-navy button-full" type="submit">
+                  <span>Submit for review</span>
+                  <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <a class="footer-brand" href="#dashboard" data-tab-link="dashboard">
+            <i class="ti ti-building-bank" aria-hidden="true"></i>
+            <span>ABC BANK</span>
+          </a>
+          <p>© 2026 ABC Bank. Educational Project.</p>
+          <div class="footer-links" aria-label="Project links">
+            <a href="#dashboard" aria-label="ABC Bank on Twitter"><i class="ti ti-brand-twitter" aria-hidden="true"></i></a>
+            <a href="#dashboard" aria-label="ABC Bank on LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
+            <a href="#dashboard" aria-label="ABC Bank on GitHub"><i class="ti ti-brand-github" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </footer>
+
+      <div id="notification-stack" class="notification-stack" aria-live="polite" aria-atomic="false"></div>
+    </div>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
